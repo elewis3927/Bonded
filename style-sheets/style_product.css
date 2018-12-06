@@ -1,0 +1,87 @@
+p{
+  font-weight: 500;
+}
+
+li{
+  font-weight: 500;
+}
+
+.section{
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: rgba(208, 208, 208, 0.4);
+}
+
+#categorySpy{
+  position: fixed;
+  width: 30%;
+  margin-left: 1rem;
+  height: 55%;
+  overflow-y: scroll;
+}
+
+#nav_queries hr{
+  position: fixed;
+  width: 20%;
+  margin-top: 4%;
+  margin-left: 2.75rem;
+}
+
+input {
+  font-size: 14px;
+  width: 55%;
+}
+
+legend{
+  font-size: 20px;
+  margin: 0;
+  padding-top: 0;
+}
+
+#display_nav .active:hover{
+  background-color: #007bff;
+  color: white;
+}
+
+#display_nav .nonactive:hover{
+  background-color: rgba(208, 208, 208, 0.4);;
+}
+
+.nav-link .active{
+  background-color: #007bff;
+}
+
+#bottom_select{
+  position: absolute;
+  margin-top: 2.5%;
+}
+
+#top_select li{
+  margin-left: 9%;
+}
+
+.center{
+  margin: 0 auto;
+}
+
+.fileLink{
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.blueLink{
+  color: #007bff;
+}
+
+#querycontainer{
+  width: 600px;
+  margin-left: 4rem;
+  margin-bottom: 4rem;
+}
+
+#bottom_select a{
+  padding: .2rem .5rem;
+}

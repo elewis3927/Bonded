@@ -1,0 +1,107 @@
+#submit{
+  width: 30%;
+  margin: 0 auto;
+}
+
+a:hover{
+  color: #007bff
+}
+
+.container{
+  width: 110%;
+  text-align: center;
+  margin: auto auto;
+}
+
+.section{
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  height: 30%;
+}
+
+input{
+  font-size: 14px;
+  width: 55%;
+  margin: auto auto;
+}
+
+input[type*="text"]{
+  margin-right: 8%;
+}
+
+input[type*="text"]{
+  margin-right: 8%;
+}
+
+#app_type{
+  width: 80%;
+  margin-right: 8%;
+  padding-right: 0
+}
+
+label{
+  margin: 0 0;
+  font-size: 18px;
+}
+
+#failed_send{
+  float: right;
+  background-color: #e03c3c;
+  width: 100%;
+  margin-top: 10%;
+  text-align: center;
+}
+
+#successful_send{
+  float: right;
+  background-color: #00d27f;
+  width: 60%;
+  margin-top: 10%;
+  text-align: center;
+  margin-right: 15%;
+}
+
+#intro{
+  overflow-wrap: break-word;
+}
+
+#title {
+    font-size: 16px;
+}
+
+#extra_margin{
+  margin-top: 6%;
+}
+
+legend{
+  font-size: 20px;
+  margin: 0;
+  text-align: right;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 40px;
+}
+
+#underline{
+  border-bottom: 2px solid orange;
+}
+
+.error2{
+  width: 20%;
+  margin: 0px 40%;
+  float: left;
+  background-color: #ff3333;
+  text-align: center;
+  color: white;
+}
+
+#message{
+  text-align: center;
+}
+
+.instruction-list{
+margin: 0 auto;
+padding: .5rem;
+font-size: 1rem;
+}

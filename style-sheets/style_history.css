@@ -1,0 +1,83 @@
+h1{
+  text-align: center;
+}
+
+p{
+  text-align: left;
+  font-weight: 500;
+}
+
+.footer p{
+  text-align: center;
+}
+
+ol{
+  font-weight: 500;
+}
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 30%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    float: right;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    color: black;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    margin-top: 2rem;
+}
+
+#underline{
+  border-bottom: 2px solid orange;
+}
+
+.cont{
+  display: flex;
+  justify-content: center;
+}
+
+.oldImages{
+  /* max-width: 100%;
+  max-height: 100%; */
+  width: 100%
+}
+
+.vImage{
+  width: 38%;
+  position: relative;
+  left: 6%;
+  margin-left: 10rem;
+  margin-top: 3rem;
+  transition: box-shadow .5s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.vImage:hover{
+  box-shadow: 0 20px 24px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent; /* Removes border color */
+  float: right; /* Move navbar toggle to left */
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #f00; /* Changes regular toggle color */
+}
+.navbar-default .navbar-toggle .icon-bar:hover {
+  background-color: #fff; /* Changes toggle color on hover */
+}
+
+#Notinfo{
+  margin-top: 19%;
+}
+
+#cont{
+  margin-left: 4%;
+}
+
+#propak{
+  margin: auto auto;
+  width: 30%;
+}

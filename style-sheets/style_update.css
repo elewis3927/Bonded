@@ -1,0 +1,54 @@
+.error2{
+  width: 20%;
+  margin: 0px 40%;
+  float: left;
+  background-color: #ff3333;
+  text-align: center;
+  color: white;
+}
+
+#featured_title{
+  font-size: 16px;
+}
+
+
+.action_title{
+  margin-bottom: 0;
+}
+
+fieldset{
+  width: 50%;
+  margin: auto auto;
+}
+
+textarea{
+  margin: auto auto;
+}
+
+input {
+  font-size: 14px;
+  width: 55%;
+}
+
+legend{
+  text-align: right;
+  font-size: 20px;
+  margin: 0;
+  padding-top: 0;
+  padding-right: 5%;
+  padding-bottom:5px;
+}
+
+#admin{
+  background-color: #808080;
+  z-index: 200;
+}
+
+#admin:hover{
+  background-color: #ff3333;
+  z-index: 200;
+}
+
+#admin a{
+  color: white;
+}

@@ -1,0 +1,85 @@
+.body{
+}
+
+.containerHome {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.carousel {
+    margin: 0 auto;
+    max-width: 100rem;
+    width: 100%;
+    height: 31rem;
+}
+
+.carousel img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.carousel iframe{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 31rem;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+  height: 100%;
+  color: orange;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover{
+  background-color: rgba(	240,	240,	245,0.3)
+
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  font-size: 250%;
+
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 150%;
+  color: orange;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 150%;
+  color: orange;
+}
+
+th{
+  text-align: center;
+}
+
+td{
+  text-align: center;
+}
+
+.services-list{
+padding: 2.2rem;
+}
+
+.services-list li{
+text-align: center;
+padding: .5rem;
+font-size: 1.4rem;
+}
+
+ul{
+  list-style-type: none;
+}
