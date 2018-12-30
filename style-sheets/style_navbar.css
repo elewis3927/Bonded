@@ -63,6 +63,7 @@ a{
   color: #808080;
   margin-bottom: 20px;
   z-index: 20;
+  width: 100%;
 }
 
 #grayline p{

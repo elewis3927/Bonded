@@ -87,65 +87,65 @@ session_start();
    <div id = "vendors">
       <h2><span id = "underline">Check out who we work with!</span></h2>
       <div class="row">
-        <div class= "vImage"><a href="http://www.scofield.com/">
+        <div class= "vImage"><a href="http://www.scofield.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/scofield.jpg" ></a></div>
-        <div class= "vImage"><a href="https://www.quikrete.com">
+        <div class= "vImage"><a href="https://www.quikrete.com" target="_blank">
           <img id = "logo" src= "../assets/logos/quickreet.png"></a></div>
-        <div class= "vImage"><a href="http://www.mapei.com/US-EN/default.asp">
+        <div class= "vImage"><a href="http://www.mapei.com/US-EN/default.asp" target="_blank">
           <img id = "logo" src= "../assets/logos/mapei.jpg"></a></div>
       </div>
 
       <div class="row">
-        <div class=" vImage"><a href="http://sinakcorp.com/">
+        <div class=" vImage"><a href="http://sinakcorp.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/sinak.png" ></a></div>
-        <div class=" vImage"><a href="http://www.daytonsuperior.com/brands/chemicals/unitex">
+        <div class=" vImage"><a href="http://www.daytonsuperior.com/brands/chemicals/unitex" target="_blank">
           <img id = "logo" src= "../assets/logos/unitex.jpg"></a></div>
-        <div class=" vImage"><a href="https://consumer.dow.com/">
+        <div class=" vImage"><a href="https://consumer.dow.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/dow_corning.png"></a></div>
       </div>
 
       <div class="row">
-        <div class=" vImage"><a href="http://www.tnemec.com/">
+        <div class=" vImage"><a href="http://www.tnemec.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/tnemec.jpeg" ></a></div>
-        <div class=" vImage"><a href="https://www.cortecvci.com/index2.php">
+        <div class=" vImage"><a href="https://www.cortecvci.com/index2.php" target="_blank">
           <img id = "logo" src= "../assets/logos/cortec.jpg"></a></div>
-        <div class=" vImage"><a href="https://grace.com/en-us">
+        <div class=" vImage"><a href="https://grace.com/en-us" target="_blank">
           <img id = "logo" src= "../assets/logos/grace.jpg"></a></div>
       </div>
 
       <div class="row">
-        <div class=" vImage"><a href="https://glaze-n-seal.com/">
+        <div class=" vImage"><a href="https://glaze-n-seal.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/glazenseal.jpg" ></a></div>
-        <div class=" vImage"><a href="https://chapinmfg.com/">
+        <div class=" vImage"><a href="https://chapinmfg.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/chapin.jpg"></a></div>
-        <div class=" vImage"><a href="https://www.daviscolors.com/">
+        <div class=" vImage"><a href="https://www.daviscolors.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/davis_colors.jpg"></a></div>
       </div>
 
       <div class="row">
-        <div class=" vImage"><a href="https://www.krafttool.com/">
+        <div class=" vImage"><a href="https://www.krafttool.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/kraft_tool_co.png" ></a></div>
-        <div class=" vImage"><a href="http://desertbrand.com/">
+        <div class=" vImage"><a href="http://desertbrand.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/desert.gif"></a></div>
-        <div class=" vImage"><a href="https://www.reefindustries.com/armorlon.php">
+        <div class=" vImage"><a href="https://www.reefindustries.com/armorlon.php" target="_blank">
           <img id = "logo" src= "../assets/logos/reef.png"></a></div>
       </div>
 
       <div class="row">
-        <div class=" vImage"><a href="https://www.basf.com/us/en.html">
+        <div class=" vImage"><a href="https://www.basf.com/us/en.html" target="_blank">
           <img id = "logo" src= "../assets/logos/basf.jpg" ></a></div>
-        <div class=" vImage"><a href="http://www.increte.com/">
+        <div class=" vImage"><a href="http://www.increte.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/increte.jpg" ></a></div>
-        <div class=" vImage"><a href="http://www.lehighwhitecement.com/Pages/home.aspx">
+        <div class=" vImage"><a href="http://www.lehighwhitecement.com/Pages/home.aspx" target="_blank">
           <img id = "logo" src= "../assets/logos/lehigh.jpg"></a></div>
       </div>
 
       <div class="row">
-        <div class=" vImage"><a href="https://www.emseal.com/">
+        <div class=" vImage"><a href="https://www.emseal.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/emseal.jpg"></a></div>
-        <div class=" vImage"><a href="http://www.beadcrete.com/">
+        <div class=" vImage"><a href="http://www.beadcrete.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/beadcrete.png"></a></div>
-        <div class=" vImage"><a href="http://www.liquiblack.com/">
+        <div class=" vImage"><a href="http://www.liquiblack.com/" target="_blank">
           <img id = "logo" src= "../assets/logos/liquiblack.jpg"></a></div>
       </div>
     </div>

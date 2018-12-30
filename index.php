@@ -166,13 +166,13 @@ session_start();
             Bulk bag management
           </li>
           <li>
-            Architectural engineering support
+            Architectural & engineering support
           </li>
           <li>
             Delivery with piggy back
           </li>
           <li>
-            Custon concrete color matching
+            Custom concrete color matching
           </li>
         </ul>
       </div>
