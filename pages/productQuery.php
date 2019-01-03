@@ -1,5 +1,6 @@
 <?php
   //display all products in a category on the products page (usually called by ajax)
+
   include "AWS_connect.php";
   if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     if(isset($_POST["criteria"]) && isset($_POST["value"])) { //Checks if action value exists
@@ -8,7 +9,7 @@
   }
 
   function productQuery($criteria, $value, $conn){
-    $product_sql = "SELECT pid, name, description FROM PRODUCT WHERE $criteria =  '$value';";
+    $product_sql = "SELECT pid, name, description FROM PRODUCT WHERE $criteria =  '$value' ORDER BY name ASC;";
     $products = mysqli_query($conn, $product_sql);
     while($products_info = mysqli_fetch_array($products)){
       $product_id = $products_info[0];
