@@ -94,7 +94,7 @@ session_start();
 </div>
 
     <div class="containerHome" style="width: 80%; margin: 0 auto;">
-      <div id="bondedCarousel" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+      <div id="bondedCarousel" class="carousel slide" data-interval="false" data-ride="carousel" style="width: 100%; height: 100%;">
         <ol class="carousel-indicators">
           <li data-target="#bondedCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#bondedCarousel" data-slide-to="1"></li>
