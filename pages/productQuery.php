@@ -23,6 +23,7 @@
           for($i = 0; $i < mysqli_num_fields($links); $i+=2){
             $linkName = $link_row[$i];
             $linkLink = $link_row[$i + 1];
+            if ($linkName == 'data'){$linkName = 'Info';}
             echo "<span class='fileLink'><a href = $linkLink class = 'blueLink' target = '_blank'>$linkName</a></span>";
           }
         }

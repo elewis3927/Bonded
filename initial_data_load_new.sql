@@ -192,15 +192,29 @@ INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Masterseal 590
 
 INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "https://www.master-builders-solutions.basf.us/en-us/products/masterseal/masterseal-590", 30);
 
-INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Pro Crylic", "PRO-CRYLIC is an acrylic polymer liquid admixture designed to improve the adhesion and other physical properties of portland cement mortar, plaster and concrete.", "Concrete Repair", "Bonded Materials");
+--INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Pro Crylic", "PRO-CRYLIC is an acrylic polymer liquid admixture designed to improve the adhesion and other physical properties of portland cement mortar, plaster and concrete.", "Concrete Repair", "Bonded Materials");
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Pro Finish", "PRO-FINISH is a cement based, poly-modified, quick-setting, concrete finishing material. It is a dry powder blend of portland cement and specialized additives designed specifically for application to concrete surfaces when a Class A finish is desired.", "Concrete Repair", "Bonded Materials");
 
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_pro_finish", 32);
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_pro_finish", 32);
+
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Pro Pak Asphalt Patch", "PRO-PAK Asphalt Repair is a cold applied high performance asphalt repair designed for repairing potholes over 1"" in depth in asphalt pavements. Use in driveways, parking lots, walkways etc.", "Concrete Repair", "Bonded Materials");
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_pro_pak_asphalt_patch", 33);
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_pro_pak_asphalt_patch", 33);
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Pro Surface", "PRO-SURFACE is a two-component, acrylic polymer modified cementitious product, for use as a resurfacing underlayment or as a finished floor coating. PRO-SURFACE is a liquid acrylic polymer and PRO-SURFACE POWDER is a select blend of portland cements and silica sand. Its adhesion and flexibility characteristics allow application to a wide variety of surfaces to produce a new, bondable surface compatible with essentially all types of adhesives and coatings.", "Concrete Repair", "Bonded Materials");
 
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_pro_surface", 34);
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_pro_surface", 34);
+
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Pro Surface 90QS", "PRO-SURFACE 90QS is a high performance, two-component, polymer-modified concrete repair mortar. Part A consists of a polymer liquid called ""PRO-SURFACE."" Part B consists of a pre-bagged mixture of quick-setting cement and specially graded sand called ""90QS."" When these two parts are mixed together they form a flexible, fast drying, high-strength repair mortar that can be subjected to vehicular traffic as soon as forty minutes after placement. Depending on the consistency of the mixture, PRO-SURFACE 90QS can be applied in thicknesses of featheredge to 10"" per lift; however, over 2"" it must be extended with 3/8"" pea gravel.", "Concrete Repair", "Bonded Materials");
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_pro_surface_90s", 35);
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("Quikrete 5000 Concrete Mix", "QUIKRETE 5000 Concrete Mix is a commercial grade blend of stone or gravel, sand and cement specially designed for higher early strength. According to ASTM C39, at 28 days, this concrete mix reaches a compressive strength of 5000 psi.", "Concrete Repair", "Quikrete");
 
@@ -303,9 +317,9 @@ INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "http://
 
 INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "http://www.mapei.com/public/US/products/NOVOPLAN_2_PLUS_SDS_EN.PDF", 58);
 
-INSERT INTO PRODUCT (name, description, category, vendor) VALUES("PRO-SURFACE", "PRO-SURFACE is a two-component, acrylic polymer modified cementitious product, for use as a resurfacing underlayment or as a finished floor coating. PRO-SURFACE is a liquid acrylic polymer and PRO-SURFACE POWDER is a select blend of portland cements and silica sand. Its adhesion and flexibility characteristics allow application to a wide variety of surfaces to produce a new, bondable surface compatible with essentially all types of adhesives and coatings. PRO-SURFACE is available in standard dark gray.", "Surface Preparation", "Bonded Materials");
-
-INSERT INTO PRODUCT (name, description, category, vendor) VALUES("PRO-SURFACE 90QS", "PRO-SURFACE 90QS is a high performance, two-component, polymer-modified concrete repair mortar. Part A consists of a polymer liquid called ""PRO-SURFACE."" Part B consists of a pre-bagged mixture of quick-setting cement and specially graded sand called ""90QS."" When these two parts are mixed together they form a flexible, fast drying, high-strength repair mortar that can be subjected to vehicular traffic as soon as forty minutes after placement. Depending on the consistency of the mixture, PRO-SURFACE 90QS can be applied in thicknesses of featheredge to 10\" per lift; however, over 2\" it must be extended with 3/8"" pea gravel.", "Surface Preparation", "Bonded Materials");
+-- INSERT INTO PRODUCT (name, description, category, vendor) VALUES("PRO-SURFACE", "PRO-SURFACE is a two-component, acrylic polymer modified cementitious product, for use as a resurfacing underlayment or as a finished floor coating. PRO-SURFACE is a liquid acrylic polymer and PRO-SURFACE POWDER is a select blend of portland cements and silica sand. Its adhesion and flexibility characteristics allow application to a wide variety of surfaces to produce a new, bondable surface compatible with essentially all types of adhesives and coatings. PRO-SURFACE is available in standard dark gray.", "Surface Preparation", "Bonded Materials");
+--
+-- INSERT INTO PRODUCT (name, description, category, vendor) VALUES("PRO-SURFACE 90QS", "PRO-SURFACE 90QS is a high performance, two-component, polymer-modified concrete repair mortar. Part A consists of a polymer liquid called ""PRO-SURFACE."" Part B consists of a pre-bagged mixture of quick-setting cement and specially graded sand called ""90QS."" When these two parts are mixed together they form a flexible, fast drying, high-strength repair mortar that can be subjected to vehicular traffic as soon as forty minutes after placement. Depending on the consistency of the mixture, PRO-SURFACE 90QS can be applied in thicknesses of featheredge to 10\" per lift; however, over 2\" it must be extended with 3/8"" pea gravel.", "Surface Preparation", "Bonded Materials");
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("ECO PRIM GRIP", "Multipurpose Bond-Promoting Primer. ECO Prim Grip is a ready-to-use, low-VOC, synthetic resin-based primer with bond-promoting silica aggregates suspended in a dispersion. It enhances the performance and adhesion of mortars to existing ceramics and difficult-to-bond-to substrates. Plus, it improves bonding of self-leveling underlayments (SLUs) and bonds of render coats over cementitious substrates. Suitable for a wide variety of substrates, ECO Prim Grip combines excellent versatility with an easy, low-odor application.", "Surface Preparation", "Mapei");
 
@@ -439,6 +453,10 @@ INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "https://
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("PRO-CRYLIC", "PRO-CRYLIC is an acrylic polymer liquid admixture designed to improve the adhesion and other physical properties of portland cement mortar, plaster and concrete. PRO-CRYLIC is a milky white liquid that is classified by the American Concrete Institute as a non-reemulsifiable bonding admixture for general-purpose bonding and to produce polymer modified mortar. Portland cement based mixes prepared with PRO-CRYLIC will exhibit improved adhesive qualities, moisture retention, flexibility, toughness and chemical resistance. Mixes prepared with PRO-CRYLIC may be used for patching, restoring and rehabilitating concrete and masonry such as concrete floors, columns and beams, sidewalks, corridors, lanais, driveways, curbs and steps, loading docks and ramps, precast concrete and pipe. Suitable for both interior and exterior use, PRO-CRYLIC may also be used as an admixture for overlayments and specialty resurfacing mortars", "Admixtures", "Bonded Materials");
 
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_pro_crylic", 85);
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_pro_crylic", 85);
+
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("RECOVER", "Recover is a ready-to-use aqueous solution of chemical compounds specifically designed to stabilize the hydration of Portland cement concretes. The ingredients are factory pre-mixed in exact proportions under strict quality control to provide uniform results.", "Admixtures", "GRACE");
 
 INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "https://gcpat.com/sites/gcpat.com/files/2017-07/GCP0083_RECOVER-5-1216_RECOVER_HiRes.pdf", 86);
@@ -517,6 +535,9 @@ INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "https:/
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("UNI CURE", "BONDED UNI CURE is a non-flammable, non-toxic, non-acid chemical curing compound that hardens and densifies both fresh and aged concrete. It leaves the substrate bondable for subsequent coatings and meets USDA specifications for use in food processing areas.", "Curing", "Bonded Materials");
 
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_unicure", 101);
+
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_unicure", 101);
 /*************************************/
 
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("MASTERSEAL NP1", "MASTERSEAL NP 1 is a one-component, highperformance, nonpriming, gun-grade, elastomeric polyurethane sealant. It requires no mixing and typically requires no priming to bond to many materials, including concrete and masonry.", "Joint Sealants", "BASF");
@@ -821,19 +842,13 @@ INSERT INTO PRODUCT (name, description, category, vendor) VALUES("CORAL SAND", "
 
 INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_coral_sand.pdf", 158);
 
-INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_coral_sand.pdf", 158);
-
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("CORAL ROCK", "We stock .5 cubic ft. bags of 3/4"" Coral Rock. Also, 2,500 lbs. bulk bags can be special ordered.", "Aggregate", "Bonded Materials");
 
 INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_coral_rock.pdf", 159);
 
-INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/bonded_coral_rock.pdf", 159);
-
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("SILICA SAND", "We stock 100 lbs. bags of Silica Sand in #20, #30, #60, and #90 grit sizes.", "Aggregate", "Bonded Materials");
 
-INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/silica_sand.pdf", 160);
-
-INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("sds", "../assets/sds/silica_sand.pdf", 160);
+INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES("data", "../assets/data/bonded_silica_sand.pdf", 160);
 
 /***** waterproofing*/
 INSERT INTO PRODUCT (name, description, category, vendor) VALUES("PROLINE SILICONE ROOF COATING", "Proline Silicone Roof Coating is a solvent free, 100% silicone roof coating. This new product contains high solids, low VOC's, and offers a one-component, moisture-curing silicone roof coating system to restore and repair your existing roof. With its high solids content and absence of hydrocarbon solvent, this coating can be applied in excess of 40 mils in a single coat without blistering, while maintaining maximum adhesion.", "Waterproofing", "Pro Line");
