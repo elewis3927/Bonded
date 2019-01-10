@@ -95,6 +95,9 @@ if(!isset($_SESSION["adminname"])){
           <form name="addProduct" method="post"
           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
             <div class = "form-group">
+
+
+
               <span class="error"> <?php echo $pNameErr;?></span><br>
               <legend for="pName">Product Name:
                 <input type="text" name="pName" value=""> </legend>
@@ -106,6 +109,9 @@ if(!isset($_SESSION["adminname"])){
                 <input type="txt" name="vendor" value=""> </legend>
               <span class="error"> <?php echo $pDescriptionErr;?></span><br>
               <textarea rows ="3" cols = "30" type="text" name="pDescription" placeholder= "Product Description" style = "font-size: 14px;"></textarea><br><br>
+
+<!-- buggy code for saving sds/data files as files rather than links-->
+<!--
               <span class="error"> <?php echo $dataFileErr;?></span>
               <legend for="dataFileToUpload">Data File:
                 <input type="file" name="dataFileToUpload" id="dataFileToUpload"></legend>
@@ -115,7 +121,9 @@ if(!isset($_SESSION["adminname"])){
               <span class="error"> <?php echo $cChartUploadErr;?></span>
               <legend for="cChartToUpload">Color Chart:
                 <input type="file" name="cChartToUpload" id="cChartToUpload"></legend>
-              <p style="margin: 3% auto;"> OR </p>
+
+              <p style="margin: 3% auto;"> OR </p> -->
+
               <span class="error"> <?php echo $pLinkErr;?></span>
               <legend for="dataLink">Link to Data File:
                 <input type="text" name="dataLink" id="dataLink"></legend>
@@ -125,10 +133,16 @@ if(!isset($_SESSION["adminname"])){
               <span class="error"> <?php echo $cChartLinkErr;?></span>
               <legend for="cChartLink">Link to Color Chart:
                 <input type="text" name="cChartLink" id="cChartLink"></legend>
+
             </div><br>
             <input type="submit" name = "addProduct" value="Submit"/><br><br>
             <hr class = "orange"><br>
           </form>
+
+
+
+
+
         </fieldset>
       </div>
       <div id="delete" class = "section">

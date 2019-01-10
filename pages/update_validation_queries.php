@@ -17,6 +17,10 @@
     }
   }
 
+  function getValidString($string){
+
+  }
+
   // error messages
   $notifyErr = $notifySuccess = $pNameErr = $pDescriptionErr = $deleteErr = $sdsErr = $categoryErr =  "";
   $pVendorErr = $sql = $featuredErr = $imageInfoErr= $featuredDescErr = $dimensionErr = $eventNameErr = "";
@@ -37,7 +41,7 @@
         $pNameErr = "Product name required";
         $writeQ = false;
       }else {
-        $pName = $_POST["pName"];
+        $pName = str_replace('\'', "", $_POST["pName"]);
         //check that product name is unique
         $exists_result = mysqli_query($conn, "SELECT * FROM PRODUCT WHERE name = '$pName'");
         if(mysqli_num_rows($exists_result)>0){
@@ -49,19 +53,19 @@
         $pVendorErr = "Vendor Required";
         $writeQ = false;
       }else{
-        $vendor = $_POST["vendor"];
+        $vendor = str_replace('\'', "", $_POST["vendor"]);
       }
       if (empty($_POST["pDescription"])) { // if the field element name is empty
         $pDescriptionErr = "Product description required";
         $writeQ = false;
       } else {
-        $pDescription = $_POST["pDescription"];
+        $pDescription = str_replace('\'', "", $_POST["pDescription"]);
       }
       if (empty($_POST["category"])){
         $categoryErr = "Product category required";
         $writeQ = false;
       }else {
-        $category = $_POST["category"];
+        $category = str_replace('\'', "", $_POST["category"]);
       }
       if(!empty($_POST["sdsLink"])){
         $sdsLinkQ = true;
@@ -291,7 +295,6 @@
       $sql .= "DELETE FROM EVENT WHERE eid = $id";
     }
 
-     $inserted_id = mysqli_insert_id($conn);
     //execute query for product data/sds/color chart file(s) if necessary
     if ($addGalleryQ == true){
       $galleryName = mysqli_real_escape_string($conn, $galleryName);
@@ -342,49 +345,54 @@
         //execute main query string
         if(!mysqli_query($conn, $sql)){
           echo "Error: ". mysqli_error($conn);
-        }
-        if($writeQ){
-           if($dataLinkQ){
-            $data_file_sql .= "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id)
-            VALUES('data', '$dataLink', $inserted_id)";
-            if(!mysqli_query($conn, $data_file_sql)) {
-              echo "Error: ". mysqli_error($conn);
+        }else{
+          //get the id of the last inserted product
+          $result = mysqli_query($conn, "SELECT MAX(pid) FROM PRODUCT");
+          $inserted_id = mysqli_fetch_array($result)[0];
+
+          if($writeQ){
+             if($dataLinkQ){
+              $data_file_sql .= "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id)
+              VALUES('data', '$dataLink', $inserted_id)";
+              if(!mysqli_query($conn, $data_file_sql)) {
+                echo "Error: ". mysqli_error($conn);
+              }
+            }else if(fileExists("dataFileToUpload")){
+              $ext = pathinfo($_FILES["dataFileToUpload"]["name"], PATHINFO_EXTENSION);
+              $data_target_file = "./assets/data/$inserted_id.$ext";
+              upload($data_target_file, $_FILES["dataFileToUpload"], "data");
+              $data_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('data', '$data_target_file', $inserted_id)";
+              if(!mysqli_query($conn, $data_file_sql)) {
+                echo "Error: ". mysqli_error($conn);
+              }
             }
-          }else if(fileExists("dataFileToUpload")){
-            $ext = pathinfo($_FILES["dataFileToUpload"]["name"], PATHINFO_EXTENSION);
-            $data_target_file = "./assets/data/$inserted_id.$ext";
-            upload($data_target_file, $_FILES["dataFileToUpload"], "data");
-            $data_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('data', '$data_target_file', $inserted_id)";
-            if(!mysqli_query($conn, $data_file_sql)) {
-              echo "Error: ". mysqli_error($conn);
+            if($sdsLinkQ){
+              $sds_file_sql .= "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES('sds', '$sdsLink', $inserted_id)";
+              if(!mysqli_query($conn, $sds_file_sql)) {
+                echo "Error: ". mysqli_error($conn);
+              }
+            }else if(fileExists("sdsFileToUpload")){
+              $ext = pathinfo($_FILES["sdsFileToUpload"]["name"], PATHINFO_EXTENSION);
+              $sds_target_file = "./assets/sds/$inserted_id.$ext";
+              upload($sds_target_file, $_FILES["sdsFileToUpload"], "data");
+              $sds_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('sds', '$sds_target_file', $inserted_id)";
+              if(!mysqli_query($conn, $sds_file_sql)) {
+                echo "Error: ". mysqli_error($conn);
+              }
             }
-          }
-          if($sdsLinkQ){
-            $sds_file_sql .= "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES('sds', '$sdsLink', $inserted_id)";
-            if(!mysqli_query($conn, $sds_file_sql)) {
-              echo "Error: ". mysqli_error($conn);
-            }
-          }else if(fileExists("sdsFileToUpload")){
-            $ext = pathinfo($_FILES["sdsFileToUpload"]["name"], PATHINFO_EXTENSION);
-            $sds_target_file = "./assets/sds/$inserted_id.$ext";
-            upload($sds_target_file, $_FILES["sdsFileToUpload"], "data");
-            $sds_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('sds', '$sds_target_file', $inserted_id)";
-            if(!mysqli_query($conn, $sds_file_sql)) {
-              echo "Error: ". mysqli_error($conn);
-            }
-          }
-          if($cChartLinkQ){
-            $cChart_sql .= "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES('color chart', '$sdsLink', $inserted_id)";
-            if(!mysqli_query($conn, $cChart_sql)) {
-              echo "Error: ". mysqli_error($conn);
-            }
-          }else if(fileExists("cChartToUpload")){
-            $ext = pathinfo($_FILES["cChartToUpload"]["name"], PATHINFO_EXTENSION);
-            $chart_target_file = "./assets/colorchart/$inserted_id.$ext";
-            upload($chart_target_file, $_FILES["cChartToUpload"], "data");
-            $chart_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('color chart', '$chart_target_file', $inserted_id)";
-            if(!mysqli_query($conn, $chart_file_sql)) {
-              echo "Error: ". mysqli_error($conn);
+            if($cChartLinkQ){
+              $cChart_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES('color chart', '$sdsLink', $inserted_id)";
+              if(!mysqli_query($conn, $cChart_sql)) {
+                echo "Error: ". mysqli_error($conn);
+              }
+            }else if(fileExists("cChartToUpload")){
+              $ext = pathinfo($_FILES["cChartToUpload"]["name"], PATHINFO_EXTENSION);
+              $chart_target_file = "./assets/colorchart/$inserted_id.$ext";
+              upload($chart_target_file, $_FILES["cChartToUpload"], "data");
+              $chart_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('color chart', '$chart_target_file', $inserted_id)";
+              if(!mysqli_query($conn, $chart_file_sql)) {
+                echo "Error: ". mysqli_error($conn);
+              }
             }
           }
         }

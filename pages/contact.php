@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php'; // If you're using Composer (recommended)
 include 'AWS_connect.php';
+include 'sendgridConnect.php';
 session_start();
 //strings to hold errors, displayed if there is an error with the field
 $contact_first_name_error = $contact_last_name_error = $contact_company_error = "";
@@ -47,12 +48,12 @@ if(isset($_POST["app_first_name"])){
     $error_free = false;
   }
   if($error_free){
-    $notifySuccess = "<p class = 'success'>Success!</p><br>";
     $subject_string = $_POST["job_type"]." Application: ".$_POST['app_last_name'].", ".$_POST['app_first_name'];
-    $message_string = $_POST['app_first_name']." ".$_POST['app_last_name']." submitted a job application! \n\n See the attached document.";
+    $message_string = $_POST['app_first_name']." ".$_POST['app_last_name']." submitted a job application.";
     $email = new \SendGrid\Mail\Mail();
-    $email->setFrom("zackrossman10@gmail.com", "Example User");
-    $email->addTo("zrossman20@cmc.edu", "Example User");
+    $email->setFrom("zackrossman10@gmail.com", "Bonded Applicant");
+    // $email->addTo("zrossman20@cmc.edu", "Example User");
+    $email->addTo("bondedmaterialsco@gmail.com", "Bonded Admin");
     $email->setSubject($subject_string);
     $email->addContent("text/plain", $message_string);
 
@@ -63,16 +64,21 @@ if(isset($_POST["app_first_name"])){
     $att1->setFilename($appName);
     $att1->setDisposition("attachment");
     $email->addAttachment( $att1);
-    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+    $sendgrid = new \SendGrid($apiKey);
+    // $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
     try {
       $response = $sendgrid->send($email);
-      $GLOBALS['sent_success'] = "Application Submitted!";
-      // print $response->statusCode() . "\n";
+      if($response->statusCode() == 202){
+        $notifySuccess = "<p class = 'success'>Application Submitted</p><br>";
+      }else{
+        $notifyErr = "<p class = 'error2'>Failed to Submit Application</p><br>";
+
+      }
       // print_r($response->headers());
       // print $response->body() . "\n"; // SendGrid specific errors are found here
     } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
-      $sent_error = "Failed to Submit Application";
+      // echo 'Caught exception: ',  $e->getMessage(), "\n";
+      $notifyErr = "<p class = 'error2'>Failed to Submit Application</p><br>";
     }
   }else{
     $notifyErr = "<p class = 'error2'>Error</p><br>";
@@ -106,36 +112,40 @@ if(isset($_POST["contact"])){
     $error_free = false;
   }
   if($error_free){
-    $notifySuccess = "<p class = 'success'>Success!</p><br><br>";
-    $message_string = "CUSTOMER CONTACT\n\n";
-    $message_string .= "First Name: ".$_POST['con_first_name']."\r\n";
-    $message_string .= "Last Name:  ".$_POST['con_last_name']."\r\n";
-    $message_string .= "Company: ".$_POST['con_company']."\r\n";
-    $message_string .= "Email: ".$_POST['con_email']."\r\n";
-    $message_string .= "Phone: ".$_POST['con_phone']."\r\n";
-    $message_string .= "Message: ".$_POST['con_message']."\r\n";
+    $message_string = "First Name: ".$_POST['con_first_name']."\n\n";
+    $message_string .= "Last Name:  ".$_POST['con_last_name']."\n\n";
+    $message_string .= "Company: ".$_POST['con_company']."\n\n";
+    $message_string .= "Email: ".$_POST['con_email']."\n\n";
+    $message_string .= "Phone: ".$_POST['con_phone']."\n\n";
+    $message_string .= "Message: ".$_POST['con_message']."\n\n";
     $subject_string = "Customer Contact: ".$_POST['con_first_name']." ".$_POST['con_last_name'];
     $email = new \SendGrid\Mail\Mail();
-    $email->setFrom("zackrossman10@gmail.com", "Example User");
-    $email->addTo("zrossman20@cmc.edu", "Example User");
+    $email->setFrom("zackrossman10@gmail.com", "Bonded Customer");
+    $email->addTo("bondedmaterialsco@gmail.com", "Bonded Admin");
     $email->setSubject($subject_string);
     $email->addContent("text/plain", $message_string);
-    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+    $sendgrid = new \SendGrid($apiKey);
+
+    // $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
     try {
       $response = $sendgrid->send($email);
-      $GLOBALS['sent_success'] = "Message sent!";
-    // print $response->statusCode() . "\n";
+      if($response->statusCode() == 202){
+        $notifySuccess = "<p class = 'success'>Message Sent</p><br>";
+      }else{
+        $notifyErr = "<p class = 'error2'>Failed to Send Message</p><br><br>";
+      }
     // print_r($response->headers());
     // print $response->body() . "\n"; // SendGrid specific errors are found here
     } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
-      $GLOBALS['sent_error'] = "Message failed to send";
+      // echo 'Caught exception: ',  $e->getMessage(), "\n";
+      $notifyErr = "<p class = 'error2'>Failed to Send Message</p><br><br>";
     }
   }else{
     $notifyErr = "<p class = 'error2'>Error</p><br><br>";
   }
 }
 
+//reset post array
 $_POST = array();
 
 ?>
