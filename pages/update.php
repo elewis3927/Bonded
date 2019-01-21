@@ -27,7 +27,9 @@ if(!isset($_SESSION["adminname"])){
     <div style="background-color: grey; height: 55px;" class = "fixed-top">
     <nav class="navbar navbar-expand-sm fixed-top">
     <div id="logo">
-        <img src= "../assets/logos/logo.png"  href="../index.php" style="width:55px;">
+      <a href="../index.php">
+        <img src= "../assets/logos/logo.png" style="width:55px;">
+      </a>
     </div>
     <button class="navbar-toggler hidden-md-up pull-xs-right"
             data-target="#navB" data-toggle="collapse" type="button">
@@ -57,7 +59,7 @@ if(!isset($_SESSION["adminname"])){
           </li>
           <li class="nav-item container-fluid">
             <button class = "btn">
-            <a class="nav-link active" href="project_gallery.php">Project Gallery</a>
+            <a class="nav-link active" href="history.php">History</a>
             </button>
           </li>
           <li class="nav-item container-fluid">
@@ -133,15 +135,13 @@ if(!isset($_SESSION["adminname"])){
               <span class="error"> <?php echo $cChartLinkErr;?></span>
               <legend for="cChartLink">Link to Color Chart:
                 <input type="text" name="cChartLink" id="cChartLink"></legend>
-
+              <span class="error"> <?php echo $pictureUploadErr;?></span>
+              <legend for="pictureUpload">Picture:
+                <input type="file" name="pictureUpload" id="pictureUpload"></legend>
             </div><br>
             <input type="submit" name = "addProduct" value="Submit"/><br><br>
             <hr class = "orange"><br>
           </form>
-
-
-
-
 
         </fieldset>
       </div>
@@ -195,16 +195,11 @@ if(!isset($_SESSION["adminname"])){
               <legend for="data"> Product Image
                 <input type="file" name="featured_image" id="featured_image"></legend>
               <span class="error"> <?php echo $imageInfoErr;?></span><br>
-              <legend for="featured_type" style='text-align: center'>Image File Type:
-              <input type="radio" id="jpg" name="featured_type" style="width: 4%;" value=".jpg"/>
-              <label for= "jpg">.jpg</label>
-              <input type="radio" id="png" name="featured_type" style="width: 5%;" value=".png"/>
-              <label for="png">.png</label></legend>
               <legend for="data">Image Height (px)
                 <input type="text" name="image_height" value = ""></legend>
               <legend for="data">Image Width (px)
                 <input type="text" name="image_width" value = ""></legend>
-                <p style='font-size: 12px;'>(suggested: height ~200px, width ~160px)</p><br>
+                <p style='font-size: 12px;'>(suggested width: ~160px)</p><br>
               <input name="changeFeature" type="submit" value="Submit"/><br><br>
               <hr class = "orange"><br>
             </div>
@@ -376,7 +371,7 @@ if(!isset($_SESSION["adminname"])){
        </div>
     </div>
     <div class = "footer">
-      <p style = "color: white; font-weight: 400"> © 2018 Bonded Materials Company <p>
+      <p style = "color: white; font-weight: 400"> © 2019 Bonded Materials Company <p>
     </div>
   </body>
 </html>

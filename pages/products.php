@@ -32,7 +32,9 @@
   <div style="background-color: grey; height: 55px;" class = "fixed-top">
   <nav class="navbar navbar-expand-sm fixed-top">
   <div id="logo">
-      <img src= "../assets/logos/logo.png"  href="../index.php" style="width:55px;">
+    <a href="../index.php">
+      <img src= "../assets/logos/logo.png" style="width:55px;">
+    </a>
   </div>
   <button class="navbar-toggler hidden-md-up pull-xs-right"
           data-target="#navB" data-toggle="collapse" type="button">
@@ -160,7 +162,7 @@
        </div>
     </div>
     <div class = "footer">
-      <p style = "color: white; font-weight: 400" id="hi"> © 2018 Bonded Materials Company <p>
+      <p style = "color: white; font-weight: 400" id="hi"> © 2019 Bonded Materials Company <p>
     </div>
 </body>
 <script type="text/javascript">

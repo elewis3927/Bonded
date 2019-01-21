@@ -23,7 +23,9 @@ session_start();
   <div style="background-color: grey; height: 55px;" class = "fixed-top">
   <nav class="navbar navbar-expand-sm fixed-top">
   <div id="logo">
-      <img src= "../assets/logos/logo.png"  href="../index.php" style="width:55px;">
+    <a href="../index.php">
+      <img src= "../assets/logos/logo.png" style="width:55px;">
+    </a>
   </div>
   <button class="navbar-toggler hidden-md-up pull-xs-right"
           data-target="#navB" data-toggle="collapse" type="button">

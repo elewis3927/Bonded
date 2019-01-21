@@ -10,22 +10,18 @@
     return true;
   }
 
-  function upload($target_file, $file, $upload_type){
-    if (move_uploaded_file($file["tmp_name"], $target_file)) {
+  function upload($file, $target_file, $upload_type){
+    if (move_uploaded_file($file, $target_file)) {
     } else {
         echo "Sorry, there was an error uploading your $upload_type file. ";
     }
-  }
-
-  function getValidString($string){
-
   }
 
   // error messages
   $notifyErr = $notifySuccess = $pNameErr = $pDescriptionErr = $deleteErr = $sdsErr = $categoryErr =  "";
   $pVendorErr = $sql = $featuredErr = $imageInfoErr= $featuredDescErr = $dimensionErr = $eventNameErr = "";
   $eventDescriptionErr = $eventDateErr = $eventTimeErr = $eventLocationErr = $pLinkErr = "";
-  $eventackErr = $ackErr = $dataFileErr = $sdsFileErr = $data_file_sql = $sds_file_sql = $dataLink ="";
+  $eventackErr = $ackErr = $data_file_sql = $sds_file_sql = $dataLink = $pictureUploadErr ="";
   $deleteAdminErr = $ackAdminErr = $usernameErr = $eventdeleteErr = $passwordErr = $sdsLink ="";
   $cChartUploadErr = $cChartLinkErr = $cChartLinkQ = $cChartLink = "";
   $galleryNameErr = $galleryDescriptionErr = $galleryInfoErr = $galleryEvent= $gallaryackErr = "";
@@ -33,7 +29,7 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $writeQ = $featuredQ = $deleteQ = $eventdeleteQ = $sdsLinkQ = false;
     $eventQ = $addAdminQ = $deleteAdminQ = $dataLinkQ = false;
-    $addGalleryQ = $deleteGalleryQ = false;
+    $addGalleryQ = $deleteGalleryQ = $product_picture_upload= false;
 
     if (!empty($_POST['addProduct'])){
       $writeQ = true;
@@ -79,6 +75,19 @@
         $cChartLinkQ = true;
         $cChartLink = $_POST["cChartLink"];
       }
+      if(fileExists("pictureUpload")){
+        //upload the new product picture
+        $path = $_FILES['pictureUpload']['name'];
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        if(!($ext == "jpg" || $ext == "png")){
+          $pictureUploadErr = "File must be .png or .jpg";
+          $writeQ = false;
+        }else{
+          $product_picture_upload = true;
+          $picture_file = '../assets/product_pictures/'.$_POST["pName"].".$ext";
+          upload($_FILES["pictureUpload"]["tmp_name"], $picture_file, $ext);
+        }
+      }
     }
 
     if (!empty($_POST['changeFeature'])){
@@ -99,8 +108,12 @@
 
       if(fileExists("featured_image")){
         $image_upload = true;
-        //check that image info was given
-        if(empty($_POST["image_height"]) || empty($_POST["image_width"]) || empty($_POST["featured_type"])) {
+        $path = $_FILES['featured_image']['name'];
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        if(!($ext == "jpg" || $ext == "png")){
+          $imageInfoErr = "File must be .png or .jpg";
+          $writeQ = false;
+        }else if(empty($_POST["image_height"]) || empty($_POST["image_width"])) {
           $imageInfoErr = "Image height, width, and file type required";
           $featuredQ = false;
         }else{
@@ -110,9 +123,9 @@
             if(is_file($file)) unlink($file); // delete file
           }
           //upload the new featured image
-          $featured_file_type = $_POST["featured_type"];
-          $featured_file = '../assets/featured_image/featured_image'.$featured_file_type;
-          move_uploaded_file($_FILES["featured_image"]["tmp_name"], $featured_file);
+          $featured_file = '../assets/featured_image/featured_image'.".$ext";
+          upload($_FILES["featured_image"]["tmp_name"], $featured_file, $ext);
+          // move_uploaded_file($_FILES["featured_image"]["tmp_name"], $featured_file);
           $image_height = $_POST["image_height"];
           $image_width = $_POST["image_width"];
         }
@@ -126,13 +139,13 @@
         $addGalleryQ  = false;
         $galleryDescriptionErr = "Please enter a Description";
       }else{
-        $galleryDescription = $_POST["galleryDescription"];
+        $galleryDescription = str_replace('\'', "", $_POST["galleryDescription"]);
       }
       if(empty($_POST["galleryName"])){
         $galleryNameErr = "Please enter a name";
         $addGalleryQ = false;
       } else {
-        $galleryName = $_POST["galleryName"];
+        $galleryName = str_replace('\'', "", $_POST["galleryName"]);
       }
     }
 
@@ -159,6 +172,11 @@
       }else{
         if(isset($_POST['acknowledge'])){
           $delete = $_POST["delete"];
+          //delete old product image
+          $files = glob('../assets/product_pictures/'.$_POST["delete"].'*');
+          foreach($files as $file){ // iterate files
+            if(is_file($file)) unlink($file); // delete file
+          }
         }else{
           $ackErr = "Please acknowledge your product deletion";
           $deleteQ = false;
@@ -187,31 +205,31 @@
         $eventNameErr = "Event name required";
         $eventQ = false;
       } else {
-        $eventName = $_POST["eventName"];
+        $eventName = str_replace('\'', "", $_POST["eventName"]);
       }
       if (empty($_POST["eventDescription"])) {
         $eventDescriptionErr = "Event description required";
         $eventQ = false;
       } else {
-        $eventDescription = $_POST["eventDescription"];
+        $eventDescription = str_replace('\'', "", $_POST["eventDescription"]);
       }
       if (empty($_POST["eventLocation"])) {
         $eventLocationErr = "Event location required";
         $eventQ = false;
       } else {
-        $eventLocation = $_POST["eventLocation"];
+        $eventLocation = str_replace('\'', "", $_POST["eventLocation"]);
       }
       if (empty($_POST["eventDate"])) {
         $eventDateErr = "Event date required";
         $eventQ = false;
       } else {
-        $eventDate = $_POST["eventDate"];
+        $eventDate = str_replace('\'', "", $_POST["eventDate"]);
       }
       if (empty($_POST["eventTime"])) {
         $eventTimeErr = "Event time required";
         $eventQ = false;
       } else {
-        $eventTime = $_POST["eventTime"];
+        $eventTime = str_replace('\'', "", $_POST["eventTime"]);
       }
     }
 
@@ -221,13 +239,13 @@
         $usernameErr = "Enter a username";
         $addAdminQ = false;
       }else{
-        $username = $_POST["adminUsername"];
+        $username = str_replace('\'', "", $_POST["adminUsername"]);
       }
       if(empty($_POST["adminPassword"])){
         $passwordErr = "Enter a password";
         $addAdminQ = false;
       }else{
-        $password = $_POST["adminPassword"];
+        $password = str_replace('\'', "", $_POST["adminPassword"]);
       }
     }
 
@@ -274,7 +292,7 @@
       mysqli_query($conn, "DELETE FROM FEATURED_PRODUCT WHERE fid > 0");
       $sql .= "INSERT INTO FEATURED_PRODUCT (name, description, image_path, image_height, image_width) VALUES ('$featured', '$description'";
       if($image_upload){
-        $sql .= ", '../assets/featured_image/featured_image$featured_file_type', $image_height, $image_width)";
+        $sql .= ", '../assets/featured_image/featured_image.$ext', $image_height, $image_width)";
       }else{
         $sql .= ", null, null, null)";
       }
@@ -357,25 +375,9 @@
               if(!mysqli_query($conn, $data_file_sql)) {
                 echo "Error: ". mysqli_error($conn);
               }
-            }else if(fileExists("dataFileToUpload")){
-              $ext = pathinfo($_FILES["dataFileToUpload"]["name"], PATHINFO_EXTENSION);
-              $data_target_file = "./assets/data/$inserted_id.$ext";
-              upload($data_target_file, $_FILES["dataFileToUpload"], "data");
-              $data_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('data', '$data_target_file', $inserted_id)";
-              if(!mysqli_query($conn, $data_file_sql)) {
-                echo "Error: ". mysqli_error($conn);
-              }
             }
             if($sdsLinkQ){
               $sds_file_sql .= "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES('sds', '$sdsLink', $inserted_id)";
-              if(!mysqli_query($conn, $sds_file_sql)) {
-                echo "Error: ". mysqli_error($conn);
-              }
-            }else if(fileExists("sdsFileToUpload")){
-              $ext = pathinfo($_FILES["sdsFileToUpload"]["name"], PATHINFO_EXTENSION);
-              $sds_target_file = "./assets/sds/$inserted_id.$ext";
-              upload($sds_target_file, $_FILES["sdsFileToUpload"], "data");
-              $sds_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('sds', '$sds_target_file', $inserted_id)";
               if(!mysqli_query($conn, $sds_file_sql)) {
                 echo "Error: ". mysqli_error($conn);
               }
@@ -385,12 +387,13 @@
               if(!mysqli_query($conn, $cChart_sql)) {
                 echo "Error: ". mysqli_error($conn);
               }
-            }else if(fileExists("cChartToUpload")){
-              $ext = pathinfo($_FILES["cChartToUpload"]["name"], PATHINFO_EXTENSION);
-              $chart_target_file = "./assets/colorchart/$inserted_id.$ext";
-              upload($chart_target_file, $_FILES["cChartToUpload"], "data");
-              $chart_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('color chart', '$chart_target_file', $inserted_id)";
-              if(!mysqli_query($conn, $chart_file_sql)) {
+            }
+            if($product_picture_upload){
+              // $ext = pathinfo($_FILES["dataFileToUpload"]["name"], PATHINFO_EXTENSION);
+              // $data_target_file = "./assets/data/$inserted_id.$ext";
+              // upload($data_target_file, $_FILES["dataFileToUpload"], "data");
+              $data_file_sql = "INSERT INTO PRODUCT_IMAGE (name, image_path, product_id) VALUES ('picture', '$picture_file', $inserted_id)";
+              if(!mysqli_query($conn, $data_file_sql)) {
                 echo "Error: ". mysqli_error($conn);
               }
             }
