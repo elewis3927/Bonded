@@ -5,15 +5,20 @@ $username = $password = $adminLogErr = "";
 $writeQ = false;
 
 if (isset($_POST["authenticate"])){
+  // echo "hi";
+
   $username = mysqli_real_escape_string($conn, $_POST["username"]);
   $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
   $result = mysqli_query($conn, "SELECT username FROM ADMIN WHERE username = '$username' AND password = '$password'");
   if(mysqli_num_rows($result) >0){
     session_start();
-    $_SESSION['adminname'] = mysqli_fetch_array($result)[0];
-    header("Location: update.php"); /* Redirect browser */
-    exit();
+    if(true){
+      // echo "session starting";
+      // session_start();
+      header("Location: ./update.php"); /* Redirect browser */
+      exit();
+    }
   }else{
     $adminLogErr = "Incorrect Username or Password";
   }
@@ -84,14 +89,13 @@ if (isset($_POST["authenticate"])){
         <button class = "btn" id="admin" style="  background-color: #808080;">
         <a class="nav-link active" style="color: white;"
         <?php
-          if(isset($_SESSION["adminname"])){
-            $name = $_SESSION["adminname"];
-            echo "href='update.php'> Admin: $name";
+          if(session_id() == ''){
+            echo "href='update.php'> Admin";
           }else{
             echo 'href="admin.php"> Admin';
           }
-          ?>
-        </a>
+        ?>
+      </a>
     </div>
   </div>
 </nav>

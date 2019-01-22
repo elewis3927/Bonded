@@ -68,9 +68,8 @@ session_start();
         <button class = "btn" id="admin">
         <a class="nav-link active"
         <?php
-          if(isset($_SESSION["adminname"])){
-            $name = $_SESSION["adminname"];
-            echo "href='update.php'> Admin: $name";
+          if(session_id() == ''){
+            echo "href='update.php'> Admin";
           }else{
             echo 'href="admin.php"> Admin';
           }

@@ -1,11 +1,12 @@
 <?php include "AWS_connect.php";
 session_start();
-if(!isset($_SESSION["adminname"])){
-  unset($_SERVER);
-  unset($_POST);
-  header("Location: admin.php"); /* Redirect browser */
-  exit();
-}
+
+// if(session_id() == ''){
+//   // unset($_SERVER);
+//   // unset($_POST);
+//   header("Location: admin.php"); /* Redirect browser */
+//   exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +73,7 @@ if(!isset($_SESSION["adminname"])){
       <div>
         <button class="btn" id="admin">
           <a class="nav-link active" href="unset.php">
-          <?php echo "Logout: ".$_SESSION['adminname']; ?>
+            <?php echo "Logout"?>
           </a>
         </button>
       </div>
@@ -95,7 +96,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset>
           <h3 class="action_title"> Create a Product </h3>
           <form name="addProduct" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+          action="update.php" enctype="multipart/form-data">
             <div class = "form-group">
 
 
@@ -149,7 +150,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset id = "formtype">
           <h3 class = "action_title"> Delete a Product</h3><br>
           <form name="deleteProduct" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          action="update.php">
           <span class="error"> <?php echo $deleteErr;?></span>
             <div>
               <!--display all products in a dropdown menu-->
@@ -176,7 +177,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset>
           <h3 class ="action_title"> Change the Featured Product </h3><br>
           <form name="changeFeature" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+          action="update.php" enctype="multipart/form-data">
           <span class="error"> <?php echo $featuredErr;?></span>
             <div>
               <select name="featured_name">
@@ -210,7 +211,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset>
           <h3 class="action_title">Add an Event</h3><br>
           <form name="createEvent" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          action="update.php">
             <div>
               <span class="error"> <?php echo $eventNameErr;?></span>
               <legend for="eventName">Event Name:
@@ -238,7 +239,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset id = "formtype">
           <h3 class = "action_title"> Delete an Event</h3><br>
           <form name="deleteEvent" method = "post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          action="update.php">
           <span class="error"> <?php echo $eventdeleteErr;?></span>
             <div>
               <!--display all products in a dropdown menu-->
@@ -266,7 +267,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset>
           <h3 class="action_title">Add an Admin User</h3><br>
           <form name="addAdmin" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          action="update.php">
             <div>
               <span class="error"> <?php echo $usernameErr;?></span>
               <legend for="adminUsername">Username:
@@ -284,14 +285,15 @@ if(!isset($_SESSION["adminname"])){
         <fieldset id = "formtype">
           <h3 class = "action_title"> Delete an Admin User</h3><br>
           <form name="deleteAdmin" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          action="update.php">
           <span class="error"> <?php echo $deleteAdminErr;?></span>
             <div>
               <!--display all admin in a dropdown menu-->
               <select name="deleteAdminSelect">
                 <option disabled selected value> -- -- </option>
                 <?php
-                  $currentAdmin = $_SESSION['adminname'];
+                  // $currentAdmin = $_SESSION['adminname'];
+                  $currentAdmin = "";
                   $result = mysqli_query($conn, "SELECT DISTINCT username FROM ADMIN WHERE username != '$currentAdmin' ORDER BY username ASC");
                   while($row = mysqli_fetch_array($result)){
                     echo "<option value='$row[0]'>$row[0]</option>";
@@ -312,7 +314,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset>
           <h3 class="action_title"> Add new gallery photo and description </h3>
           <form name="addGallery" method="post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+          action="update.php" enctype="multipart/form-data">
             <div class = "form-group">
               <span class="error"> <?php echo $galleryNameErr;?></span><br>
               <legend for="galleryName">Photo Name:
@@ -332,7 +334,7 @@ if(!isset($_SESSION["adminname"])){
         <fieldset id = "formtype">
           <h3 class = "action_title"> Delete an Gallery Item</h3><br>
           <form name="deleteGallery" method = "post"
-          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          action="update.php">
           <span class="error"> <?php echo $eventdeleteErr;?></span>
             <div>
               <!--display all products in a dropdown menu-->

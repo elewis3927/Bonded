@@ -3,6 +3,7 @@ require '../vendor/autoload.php'; // If you're using Composer (recommended)
 include 'AWS_connect.php';
 include 'sendgridConnect.php';
 session_start();
+
 //strings to hold errors, displayed if there is an error with the field
 $contact_first_name_error = $contact_last_name_error = $contact_company_error = "";
 $contact_email_error = $contact_phone_error = $contact_message_error = "";
@@ -215,13 +216,12 @@ $_POST = array();
         <button class = "btn" id="admin">
         <a class="nav-link active"
         <?php
-          if(isset($_SESSION["adminname"])){
-            $name = $_SESSION["adminname"];
-            echo "href='update.php'> Admin: $name";
+          if(session_id() == ''){
+            echo "href='update.php'> Admin";
           }else{
             echo 'href="admin.php"> Admin';
           }
-          ?>
+        ?>
         </a>
     </div>
   </div>

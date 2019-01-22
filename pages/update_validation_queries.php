@@ -301,15 +301,16 @@
     if ($deleteQ == true){
       $delete = mysqli_real_escape_string($conn, $delete);
       $result = mysqli_query($conn, "SELECT pid FROM PRODUCT WHERE name = '$delete';");
-      $id = mysqli_fetch_array($result)[0];
-      mysqli_query($conn, "DELETE FROM PRODUCT_IMAGE WHERE product_id = $id;");
-      $sql .= "DELETE FROM PRODUCT WHERE pid = $id";
+      $id = mysqli_fetch_row($result);
+      echo $id[0];
+      mysqli_query($conn, "DELETE FROM PRODUCT_IMAGE WHERE product_id = $id[0];");
+      $sql .= "DELETE FROM PRODUCT WHERE pid = $id[0]";
     }
 
     if ($eventdeleteQ == true){
       $deleteEvent = mysqli_real_escape_string($conn, $deleteEvent);
       $result = mysqli_query($conn, "SELECT eid FROM EVENT WHERE name = '$deleteEvent';");
-      $id = mysqli_fetch_array($result)[0];
+      $id = mysqli_fetch_row($result);
       $sql .= "DELETE FROM EVENT WHERE eid = $id";
     }
 
@@ -317,7 +318,7 @@
     if ($addGalleryQ == true){
       $galleryName = mysqli_real_escape_string($conn, $galleryName);
       $galleryDescription = mysqli_real_escape_string($conn, $galleryDescription);
-      $last_gallery_id = mysqli_fetch_array(mysqli_query($conn, "SELECT MAX(gid) FROM GALLERY"))[0];
+      $last_gallery_id = mysqli_fetch_row(mysqli_query($conn, "SELECT MAX(gid) FROM GALLERY"));
       if(fileExists("gallery_image")){
         $ext = pathinfo($_FILES["gallery_image"]["name"], PATHINFO_EXTENSION);
         $gallery_target_file = "../assets/gallery_photos/$last_gallery_id.$ext";
@@ -333,7 +334,7 @@
     if ($deleteGalleryQ == true){
       $galleryEvent  = mysqli_real_escape_string($conn, $galleryEvent);
       $result = mysqli_query($conn, "SELECT gid FROM GALLERY WHERE name = '$galleryEvent';");
-      $id = mysqli_fetch_array($result)[0];
+      $id = mysqli_fetch_row($result);
       mysqli_query($conn, "DELETE FROM GALLERY WHERE gid = $id");
     }
 
@@ -352,7 +353,7 @@
     if ($deleteAdminQ == true){
       $deleteAdmin = mysqli_real_escape_string($conn, $deleteAdmin);
       $result = mysqli_query($conn, "SELECT aid FROM ADMIN WHERE username = '$deleteAdmin';");
-      $id = mysqli_fetch_array($result)[0];
+      $id = mysqli_fetch_row($result);
       $sql .= "DELETE FROM ADMIN WHERE aid = $id;";
     }
 
@@ -366,7 +367,7 @@
         }else{
           //get the id of the last inserted product
           $result = mysqli_query($conn, "SELECT MAX(pid) FROM PRODUCT");
-          $inserted_id = mysqli_fetch_array($result)[0];
+          $inserted_id = mysqli_fetch_row($result);
 
           if($writeQ){
              if($dataLinkQ){
