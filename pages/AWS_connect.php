@@ -1,8 +1,12 @@
 <?php
+
   //return a connection to AWS RDS instance "bondedDB"
   function connect_DB(){
-    $servername = 'bondeddb.c62n00tl8ltg.us-west-1.rds.amazonaws.com';
-    $conn = mysqli_connect($servername, "bondedAdmin", "Scoobie10");
+
+    //get AWS servername, dbName and dbPassword in file (not on github)
+    include "dbInfo.php";
+
+    $conn = mysqli_connect($servername, $dbName, $dbPassword);
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_error());

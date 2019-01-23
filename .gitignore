@@ -1,3 +1,4 @@
 .sendgrid.env
 .DS_Store
 vendor/
+pages/dbInfo.php
