@@ -57,6 +57,7 @@ CREATE TABLE FEATURED_PRODUCT(
   image_path VARCHAR(256) NOT NULL,
   image_height INT NOT NULL,
   image_width INT NOT NULL,
+  link VARCHAR(256) NOT NULL,
   PRIMARY KEY(fid)
 );
 

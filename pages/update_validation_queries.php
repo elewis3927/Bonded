@@ -23,7 +23,7 @@
   $eventDescriptionErr = $eventDateErr = $eventTimeErr = $eventLocationErr = $pLinkErr = "";
   $eventackErr = $ackErr = $data_file_sql = $sds_file_sql = $dataLink = $pictureUploadErr ="";
   $deleteAdminErr = $ackAdminErr = $usernameErr = $eventdeleteErr = $passwordErr = $sdsLink ="";
-  $cChartUploadErr = $cChartLinkErr = $cChartLinkQ = $cChartLink = "";
+  $cChartUploadErr = $cChartLinkErr = $cChartLinkQ = $cChartLink = $featuredLink = "";
   $galleryNameErr = $galleryDescriptionErr = $galleryInfoErr = $galleryEvent= $gallaryackErr = "";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -93,6 +93,7 @@
     if (!empty($_POST['changeFeature'])){
       $featuredQ = true;
       $image_upload = false;
+      $link_provided = false;
       if(empty($_POST["fp_description"])){
         $featuredQ = false;
         $featuredErr = "Choose a product to feature";
@@ -104,6 +105,10 @@
         $featuredQ = false;
       } else {
         $featuredDesc = $_POST["fp_description"];
+      }
+      if(!empty($_POST["plink"])){
+        $link_provided = true;
+        $featuredLink = mysqli_real_escape_string($conn, $_POST["plink"]);
       }
 
       if(fileExists("featured_image")){
@@ -290,11 +295,16 @@
       $featured = mysqli_real_escape_string($conn, $featured);
       $description = mysqli_real_escape_string($conn, $featuredDesc);
       mysqli_query($conn, "DELETE FROM FEATURED_PRODUCT WHERE fid > 0");
-      $sql .= "INSERT INTO FEATURED_PRODUCT (name, description, image_path, image_height, image_width) VALUES ('$featured', '$description'";
+      $sql .= "INSERT INTO FEATURED_PRODUCT (name, description, image_path, image_height, image_width, link) VALUES ('$featured', '$description'";
       if($image_upload){
-        $sql .= ", '../assets/featured_image/featured_image.$ext', $image_height, $image_width)";
+        $sql .= ", '../assets/featured_image/featured_image.$ext', $image_height, $image_width";
       }else{
-        $sql .= ", null, null, null)";
+        $sql .= ", null, null, null";
+      }
+      if($link_provided){
+        $sql .= ", '$featuredLink')";
+      }else{
+        $sql .= ", null)";
       }
     }
 

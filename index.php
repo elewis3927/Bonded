@@ -165,7 +165,7 @@ session_start();
             On site visits
           </li>
           <li>
-            Bulk bag management
+            Bulk bag packaging
           </li>
           <li>
             Architectural & engineering support

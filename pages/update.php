@@ -200,6 +200,8 @@ if(!isset($_SESSION["adminname"])){
               <legend for="data">Image Width (px)
                 <input type="text" name="image_width" value = ""></legend>
                 <p style='font-size: 12px;'>(suggested width: ~160px)</p><br>
+              <legend for="data"> Product Link (optional)
+                <input type="text" name="plink"></legend>
               <input name="changeFeature" type="submit" value="Submit"/><br><br>
               <hr class = "orange"><br>
             </div>
@@ -363,9 +365,14 @@ if(!isset($_SESSION["adminname"])){
       <div id ="info">
         <p id="featured_title"><strong>Featured Product</strong></p>
         <?php
-          $result = mysqli_query($conn, "SELECT name, description, image_path, image_height, image_width FROM FEATURED_PRODUCT");
+          $result = mysqli_query($conn, "SELECT name, description, image_path, image_height, image_width, link FROM FEATURED_PRODUCT");
           $row = mysqli_fetch_array($result);
-          echo "<p><u>$row[0]</u></p><p>$row[1]</p>";
+          //link to another page only if featured product link is provided
+          if($row[5] == ""){
+            echo "<p><u>$row[0]</u></p><p>$row[1]</p>";
+          }else{
+            echo "<a href='$row[5]' target='_blank'><p><u>$row[0]</u></p><p>$row[1]</p></a>";
+          }
           echo "<img style = 'height: $row[3]px; width: $row[4]px;' src='$row[2]'>";
          ?>
        </div>
