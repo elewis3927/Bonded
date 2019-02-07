@@ -201,7 +201,7 @@ if(!isset($_SESSION["adminname"])){
                 <input type="text" name="image_width" value = ""></legend>
                 <p style='font-size: 12px;'>(suggested width: ~160px)</p><br>
               <legend for="data"> Product Link (optional)
-                <input type="text" name="plink"></legend>
+                <input type="text" name="plink"></legend><br>
               <input name="changeFeature" type="submit" value="Submit"/><br><br>
               <hr class = "orange"><br>
             </div>
