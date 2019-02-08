@@ -96,26 +96,22 @@ session_start();
 </div>
 
     <div class="containerHome" style="width: 80%; margin: 0 auto;">
-      <div id="bondedCarousel" class="carousel slide" data-interval="false" data-ride="carousel" style="width: 100%; height: 100%;">
-        <ol class="carousel-indicators">
-          <li data-target="#bondedCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#bondedCarousel" data-slide-to="1"></li>
-        </ol>
+      <div id="bondedCarousel" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
       <div class="carousel-inner" style = "width: 100%;">
         <div class="carousel-item active">
           <img src="./assets/logos/plant.jpg" alt="First slide" style="">
         </div>
         <div class="carousel-item">
           <div class = "movie">
-        <iframe  src="https://www.youtube.com/embed/HctrXKp2WbQ"  allowfullscreen></iframe>
-        </div>
+            <iframe  src="https://www.youtube.com/embed/HctrXKp2WbQ"  allowfullscreen></iframe>
+          </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#bondedCarousel" role="button" data-slide="prev">
+      <a class="carousel-control-prev carousel-control" href="#bondedCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#bondedCarousel" role="button" data-slide="next">
+      <a class="carousel-control-next carousel-control" href="#bondedCarousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -187,6 +183,7 @@ session_start();
           </li>
         </ul>
       </div>
+      <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
     </div>
     <br>
 
