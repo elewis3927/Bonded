@@ -183,7 +183,6 @@ session_start();
           </li>
         </ul>
       </div>
-      <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
     </div>
     <br>
 
