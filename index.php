@@ -128,7 +128,6 @@ session_start();
                 restoration and tile-setting
               materials including: pre-bagged concrete,
               grouts, thinsets, waterproofing materials, admixtures, epoxies, sealers and much more.</p>
-              <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
               <br><br>
     </div>
 
@@ -136,27 +135,37 @@ session_start();
     <div class = "featured" style = "margin: 2rem;">
       <div style = "width: 80%; margin: 0 auto;">
         <p id="featured_title" style="font-size: 2rem;"><strong>Featured Product:</strong></p>
+        <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
+
         <?php
-          $result = mysqli_query($conn, "SELECT name, description, image_path, image_height, image_width FROM FEATURED_PRODUCT");
+          $result = mysqli_query($conn, "SELECT name, description, image_path, image_height, image_width, link FROM FEATURED_PRODUCT");
           $row = mysqli_fetch_array($result);
-          echo "<p><u>$row[0]</u></p><p>$row[1]</p>";
-           ?>
-           <div style= "margin: 0 auto; text-align: center;">
-           <?php
-           //echo "<p>$row[2]</p>";
-          echo "<img style = 'height: $row[3]px; width: $row[4]px;' src='./pages/$row[2]'>";
+          //link to another page only if featured product link is provided
+          if($row[5] == ""){
+            echo "<p><u>$row[0]</u></p><p>$row[1]</p>";
+            echo '<div style= "margin: 0 auto; text-align: center;">';
+            echo "<img style = 'height: $row[3]px; width: $row[4]px;' src='$row[2]'>";
+          }else{
+            echo "<a href='$row[5]' target='_blank'><p><u>$row[0]</u></p><p>$row[1]</p></a>";
+            echo '<div style= "margin: 0 auto; text-align: center;">';
+            echo "<a href='$row[5]' target='_blank'><img style = 'height: $row[3]px; width: $row[4]px;' src='./pages/$row[2]'></a>";
+          }
+          // echo '<div style= "margin: 0 auto; text-align: center;">';
+          //  //echo "<p>$row[2]</p>";
+          // echo "<img style = 'height: $row[3]px; width: $row[4]px;' src='./pages/$row[2]'>";
          ?>
        </div>
        </div>
        <br>
        <h4 style = "text-align: center;"> Browse our vast number of products
          <a href = "./pages/products.php" style = "color: blue; text-align: center;"> here!</a></h4>
-       <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
+       <br>
        <br><br>
     </div>
 
     <div style = "width: 85%; margin: 0 auto;">
       <p id="featured_title" style="font-size: 2rem;"><strong>Services We Provide:</strong></p>
+      <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
       <h4 style = "text-align: center;">Bonded not only supplies construction products, but also provides
       many other services listed below:</h4>
       <div class = "services-list">
@@ -178,12 +187,12 @@ session_start();
           </li>
         </ul>
       </div>
-      <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
     </div>
     <br>
 
     <div class = "events">
     <h2> <strong>Events:</strong></h2>
+    <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
     <br>
     <?php
     $result = mysqli_query($conn, 'SELECT * FROM EVENT');
@@ -219,6 +228,7 @@ session_start();
 }
 echo "</table>";
 ?>
+<br>
 <div style = "width: 40%; margin: 0 auto;"><hr class = "orange"></div>
 </div>
 
