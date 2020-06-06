@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php'; // If you're using Composer (recommended)
+// require '../vendor/autoload.php'; // If you're using Composer (recommended)
 include 'AWS_connect.php';
 include 'sendgridConnect.php';
 session_start();
